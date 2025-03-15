@@ -6,7 +6,7 @@ public class Asesor implements Trabajador { //las clases abstractas tienen por l
         this.ventas=ventas;
     }
 
-    public  doublegetVentas(){
+    public  double getVentas(){
         return ventas;
     }
         

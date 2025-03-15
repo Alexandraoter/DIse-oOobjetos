@@ -7,10 +7,9 @@ public class Ejecutar{
         t[ 1] = new Operario(10);
 
         for(Trabajador trabajador: t){
-            System.out.println(trabajador.pagar());
+            System.out.println(trabajador.pagar()); //con esto puedo pagar una nomina de muchas personas
         }
-
-        
+// polimorfismo la capacidad que tiene un metodo de comportarse segun quien lo llame
 
     }
 }
