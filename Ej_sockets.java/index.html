@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cliente WebSocket Simple</title>
+</head>
+<body>
+    <h1>Mensajes del servidor</h1>
+    <div id="messages"></div>
+    <script>
+        const socket = new WebSocket('ws://localhost:8080'); // Conexión al servidor
+
+        socket.onmessage = function(event) {
+            const messagesDiv = document.getElementById('messages');
+            messagesDiv.innerHTML += '<p>' + event.data + '</p>'; // Muestra el mensaje
+        };
+
+        socket.onopen = function() {
+            console.log('Conexión WebSocket abierta');
+        };
+
+        socket.onclose = function() {
+            console.log('Conexión WebSocket cerrada');
+        };
+    </script>
+</body>
+</html>
+
+«<!-- Establecer la conexión WebSocket:
+const socket = new WebSocket('ws://localhost:8080');: Esta línea crea un nuevo objeto WebSocket que establece una conexión con el servidor WebSocket que se está ejecutando en localhost en el puerto 8080. El protocolo ws:// indica que se está utilizando una conexión WebSocket.
+Manejar los mensajes recibidos del servidor:
+socket.onmessage = function(event) { ... }: Este bloque de código define una función que se ejecuta cada vez que el cliente recibe un mensaje del servidor.
+Dentro de la función, event.data contiene el mensaje recibido.
+const messagesDiv = document.getElementById('messages');: esta linea obtiene el elemento html con el id "messages"
+messagesDiv.innerHTML += '<p>' + event.data + '</p>';: Esta línea agrega el mensaje a un elemento <div> en la página HTML, para que se muestre en el navegador.
+Manejar los eventos de apertura y cierre de la conexión:
+socket.onopen = function() { ... }: Esta función se ejecuta cuando se establece la conexión WebSocket.
+socket.onclose = function() { ... }: Esta función se ejecuta cuando se cierra la conexión WebSocket.
+Mostrar mensajes en la consola:
+console.log('Conexión WebSocket abierta'); y console.log('Conexión WebSocket cerrada');: Estas líneas imprimen mensajes en la consola del navegador para indicar el estado de la conexión. -->»
