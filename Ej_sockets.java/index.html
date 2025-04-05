@@ -1,29 +1,31 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Cliente WebSocket Simple</title>
-</head>
-<body>
-    <h1>Mensajes del servidor</h1>
-    <div id="messages"></div>
-    <script>
-        const socket = new WebSocket('ws://localhost:8080'); // Conexión al servidor
+<!DOCTYPE html> // Declaración del tipo de documento HTML.
+<html> // Etiqueta de inicio del documento HTML.
+<head> // Etiqueta de inicio de la sección de encabezado del documento.
+    <title>Cliente WebSocket Simple</title> // Define el título de la página web.
+</head> // Etiqueta de cierre de la sección de encabezado.
+<body> // Etiqueta de inicio del cuerpo del documento HTML.
+    <h1>Mensajes del servidor</h1> // Encabezado de la página web.
+    <div id="messages"></div> // Elemento div para mostrar los mensajes del servidor.
+    <script> // Etiqueta de inicio de la sección de código JavaScript.
+        const socket = new WebSocket('ws://localhost:8080'); // Crea un objeto WebSocket y establece la conexión con el servidor.
 
-        socket.onmessage = function(event) {
-            const messagesDiv = document.getElementById('messages');
-            messagesDiv.innerHTML += '<p>' + event.data + '</p>'; // Muestra el mensaje
+
+        socket.onmessage = function(event) { // Define una función que se ejecuta cuando se recibe un mensaje del servidor.
+            const messagesDiv = document.getElementById('messages'); // Obtiene el elemento div con el id "messages".
+            messagesDiv.innerHTML += '<p>' + event.data + '</p>'; // Agrega el mensaje del servidor al elemento div.
+        };
+    
+
+        socket.onopen = function() { // Define una función que se ejecuta cuando se abre la conexión WebSocket.
+            console.log('Conexión WebSocket abierta'); // Imprime un mensaje en la consola del navegador.
         };
 
-        socket.onopen = function() {
-            console.log('Conexión WebSocket abierta');
+        socket.onclose = function() { // Define una función que se ejecuta cuando se cierra la conexión WebSocket.
+            console.log('Conexión WebSocket cerrada'); // Imprime un mensaje en la consola del navegador.
         };
-
-        socket.onclose = function() {
-            console.log('Conexión WebSocket cerrada');
-        };
-    </script>
-</body>
-</html>
+    </script> // Etiqueta de cierre de la sección de código JavaScript.
+</body> // Etiqueta de cierre del cuerpo del documento HTML.
+</html> // Etiqueta de cierre del documento HTML.
 
 «<!-- Establecer la conexión WebSocket:
 const socket = new WebSocket('ws://localhost:8080');: Esta línea crea un nuevo objeto WebSocket que establece una conexión con el servidor WebSocket que se está ejecutando en localhost en el puerto 8080. El protocolo ws:// indica que se está utilizando una conexión WebSocket.
